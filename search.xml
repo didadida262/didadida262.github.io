@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>编码记录1</title>
+    <url>/2020/02/03/%E7%BC%96%E7%A0%81%E8%AE%B0%E5%BD%951/</url>
+    <content><![CDATA[<h3 id="开篇简述"><a href="#开篇简述" class="headerlink" title="开篇简述"></a>开篇简述</h3><p>&emsp;&emsp;这将会是一系列文章，用来记录自己再次阅读《编码》这本书的相关知识的理解，以践行自己记录一切的计划。《编码》这本书是我阅读的第二遍，今后不管是再牛逼的东西，包括书记，电影等等，都尽量不要重复回顾，因为，毕竟时间有限。这样的话，就要求自己对实践过程中自身的理解与投入有不低的要求，这其实也是我的目的。25年的经验告诉我，自己曾经浪费过很多的时间，所以，我想改正。<br>&emsp;&emsp;《编码》这本书在计算机界的地位大家有目共睹。第一次阅读的时候还是大三，当时记得读完之后，就感觉重新上了一回电路原理，而且十分的清晰。这次重读，看了四五章，这种感觉愈加的强烈，这本书真的特别适合大学甚至高中生的理科必备读物，大佬就是大佬，思路清晰，言简意赅，实在佩服，反观国内的相关教材，无言。在该系列文章中，我会着重记录自己认为很重要的点，一是练练自己的理解能力，再一个就是纯粹的做个记录，记录自己曾经花费自己宝贵人生的一部分，阅读了此本经典。</p>
+<h3 id="众所周知，手电筒是为了让孩子们躲在被子下看书而发明的"><a href="#众所周知，手电筒是为了让孩子们躲在被子下看书而发明的" class="headerlink" title="众所周知，手电筒是为了让孩子们躲在被子下看书而发明的"></a>众所周知，手电筒是为了让孩子们躲在被子下看书而发明的</h3><p>口头语言，the spoken word,书面语言，the written word,这两个概念我印象极其深刻，我们人类能够创造千年的文明占据地球主体，正是得益于二者。书面语中有两种语言极其重要，一个是莫尔斯码，密码学的奠基石，另一个是布莱叶盲文系统，拯救了无数的盲人。根据其中的莫尔斯码表，可以写一个简单的密码转换器。。。。。<br> <a id="more"></a></p>
+<div align=center>
+    <img width=600 src="https://res.cloudinary.com/dmxerwnny/image/upload/v1580781885/hexo/CEeyYMC_kg2boy.jpg" >
+</div>
+
+<p>作为一个高中选择物化的伪理科生，看到书中讲解的电路基础知识的时候居然会有醍醐灌顶的感觉。其实就这么回事儿，可总有些人就是要把简单的东西讲的神而又神，玄而又玄，着实害人不浅。通信学的技术保障，就是电路。假想一下，你卧室的正对面就是你的好朋友bob的卧室，为了不用电话又能够秘密的与之联系你该怎么办呢？很简单，搭建一个简单的电路，如下所示，一个架设在你朋友家的灯泡，一个在你这边的开关，还有一节电池。该电路当然不可能当电话使，但是，通过，你房间的开关，控制灯泡的熄灭，从而传递一些只有你们才懂的内容。这就是早期电报业的基础，当然，发送电报时用的就不是灯泡了，而是有一个用金属线缠绕的铁棒和一个悬其上方的铁块组成。</p>
+<div align=center>
+    <img width=600 src="https://res.cloudinary.com/dmxerwnny/image/upload/v1580784218/hexo/%E7%94%B5%E8%B7%AF%E5%9B%BE_a1pjxz.png" >
+</div>
+这个电路是电路学中最最简单基本的了。我主要想讲一点，就是电流移动的问题。高中物理老师告诉我们，电流从电池的正极流出，经过灯泡开关而后流入负极，形成一个闭合通路，从而点亮了灯泡。那为什么电流会从正极流出呢？又为什么会从负极流入呢？电流的产生实质上是电子的移动，电池有正负极，大量电子聚集在电池的负极，而电池的正极因缺少电子而极其的渴望电子，所以接通电路后，电子会从负极沿着导线疯狂喷出，奔向正极，从而形成电流，但请注意，电流的方向与电子移动的方向是相反的。在这里还要解释一个化学知识。我们知道所有的事物都由分子构成，分子由原子构成，而原子呢？由电子、质子、中子构成。电子带负电，质子带正电，中子不带电，一般子情况下，在一个原子中，电子和质子的数目等同，此时处于一个稳定和谐的状态。请注意，所谓的正电荷负电荷只是人为规定，表示相反的这种逻辑，并不是真的存在。在此电路中，接通后的电池就是一个稳定状态。在日常生活中，想必大家都有过静电的经历。当事物处于不和谐不稳定的状态时，总会尝试修复这种状态，从而产生静电现象。当自身电子被偷走后自身处于不稳定的状态，触摸到别的物体后的那一瞬间，为了修复这种不稳定从触摸的物体上获取电子以弥补自身的缺失，产生静电火花的那一瞬间，获取到了电子，完成了修复。
+<div align=center>
+    <img width=600 src="https://res.cloudinary.com/dmxerwnny/image/upload/v1580784217/hexo/%E7%94%B5%E6%8A%A5%E6%9C%BA_o1sfcf.png" >
+</div>
+电报机这边不得不提的一个几乎影响千家万户的东西，就是继电器。如下图所示，一个极其简易的继电器。依稀记得刚上电工课那会，对着那复杂的继电器的结构，理解就花了不少时间。作者关于继电器的解释，应该说是最通俗最直接的表达，没别的废话完全从实际出发，因为这就是继电器最原始的样子，他就是这么被发明出来的。继电器的结构其实是非常简单的，简而言之，就是当我控制一个开关的时候，它会自动的改变另一个开关的状态。可以理解为连锁开关。
+<div align=center>
+    <img width=600 src="https://res.cloudinary.com/dmxerwnny/image/upload/v1580787072/hexo/%E7%BB%A7%E7%94%B5%E5%99%A8_y96hnf.png" >
+</div>
+]]></content>
+      <tags>
+        <tag>编码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>论“拖”字诀</title>
     <url>/2019/12/30/%E8%AE%BA%E2%80%9C%E6%8B%96%E2%80%9D%E5%AD%97%E8%AF%80/</url>
     <content><![CDATA[<pre><code>做任何事，无论是自己的计划还是工作中的任务，千万千万千万不要拖。因为后果和代价都极其严重，血的教训....</code></pre>]]></content>
@@ -9,8 +35,8 @@
       </tags>
   </entry>
   <entry>
-    <title>I am coming back.....</title>
-    <url>/2019/12/24/I-am-coming-back/</url>
+    <title>すべては始まったばかりです</title>
+    <url>/2019/12/24/%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AF%E5%A7%8B%E3%81%BE%E3%81%A3%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A%E3%81%A7%E3%81%99/</url>
     <content><![CDATA[<pre><code>Miles,i come back again.
 In the second half of my life,i will record everything about what i think,what i worry about,and what i confused.</code></pre><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=528273286&auto=0&height=66"></iframe>
 </br>
@@ -21,7 +47,7 @@ In the second half of my life,i will record everything about what i think,what i
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2019/12/23/hello-world/</url>
+    <url>/2019/12/23/Hello_World/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br> <a id="more"></a></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
