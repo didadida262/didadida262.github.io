@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>性能的考量：第五回(长任务) | 致敬仰望星空的人们</title><meta name="author" content="Miles｜佚心"><meta name="copyright" content="Miles｜佚心"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于性能问题，我们前文介绍过了八股文篇、实战版本以及canvas性能相关的实操。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。在web性能领域，有一个单独的单词long task,就是所谓的长任务。一般来讲，耗时超过50ms即可被认为长任务。这种长任务会导致什么结果呢？大佬解答：  If the user is attempting to interact">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能的考量：第五回(长任务)">
+<meta property="og:url" content="http://example.com/2023/11/16/%E6%80%A7%E8%83%BD%E7%9A%84%E8%80%83%E9%87%8F%EF%BC%9A%E7%AC%AC%E4%BA%94%E5%9B%9E/index.html">
+<meta property="og:site_name" content="致敬仰望星空的人们">
+<meta property="og:description" content="关于性能问题，我们前文介绍过了八股文篇、实战版本以及canvas性能相关的实操。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。在web性能领域，有一个单独的单词long task,就是所谓的长任务。一般来讲，耗时超过50ms即可被认为长任务。这种长任务会导致什么结果呢？大佬解答：  If the user is attempting to interact">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/f.jpg">
+<meta property="article:published_time" content="2023-11-16T02:54:42.000Z">
+<meta property="article:modified_time" content="2024-03-06T13:55:21.608Z">
+<meta property="article:author" content="Miles｜佚心">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/f.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2023/11/16/%E6%80%A7%E8%83%BD%E7%9A%84%E8%80%83%E9%87%8F%EF%BC%9A%E7%AC%AC%E4%BA%94%E5%9B%9E/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '性能的考量：第五回(长任务)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-06 21:55:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/f.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">139</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="致敬仰望星空的人们"><span class="site-name">致敬仰望星空的人们</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">性能的考量：第五回(长任务)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-11-16T02:54:42.000Z" title="Created 2023-11-16 10:54:42">2023-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-03-06T13:55:21.608Z" title="Updated 2024-03-06 21:55:21">2024-03-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%80%A7%E8%83%BD%E7%9A%84%E8%80%83%E9%87%8F/">性能的考量</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="性能的考量：第五回(长任务)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="关于性能问题，我们前文介绍过了八股文篇、实战版本以及canvas性能相关的实操。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。"><a href="#关于性能问题，我们前文介绍过了八股文篇、实战版本以及canvas性能相关的实操。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。" class="headerlink" title="关于性能问题，我们前文介绍过了八股文篇、实战版本以及canvas性能相关的实操。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。"></a>关于性能问题，我们前文介绍过了<strong>八股文篇、实战版本以及canvas性能相关的实操</strong>。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。</h3><p>在web性能领域，有一个单独的单词<code>long task</code>,就是所谓的<strong>长任务</strong>。一般来讲，耗时超过50ms即可被认为长任务。这种长任务会导致什么结果呢？大佬解答：</p>
+<blockquote>
+<p>If the user is attempting to interact with the page while a long task runs—or if an important rendering update needs to happen—the browser will be delayed in handling that work.</p>
+</blockquote>
+<p>简言之：<code>卡死你</code>。</p>
+<p>以目下的一个业务场景为例。该项目的某个页面加载耗时，长达6s。打开<code>performance</code>工具分析发现，符合长任务定义的操作，存在还不止一个，且单个耗时远超50ms，如下图所示：</p>
+<img src="/img/性能优化5_1.jpg" alt="图片描述">
+
+<p><strong>针对上述的“long task”，我们怎么优化呢？</strong></p>
+<ol>
+<li><strong>异步化任务</strong><img src="/img/性能优化5_2.jpg" alt="图片描述"></li>
+</ol>
+<p>依据向主线程妥协的原则，有些场景下的一些任务，不需要等待他完成。例如页面中有个列表模块，初次加载页面用户是看不到的，只有当我们点击了按钮后才会显示。那么对于这个组件的js代码，我们就可以将它从主线程剥离出来。</p>
+<img src="/img/性能优化5_3.jpg" alt="图片描述">
+
+<p>图中的iniData函数就是该组件触发的。单单这一个函数额耗时，就超过了50ms。为此，我们可以用定时器剥离之。（注意，不一定非得用定时器，promise等都可以）我们现在再来看一看总的<code>long task</code>的情况：</p>
+<img src="/img/性能优化5_4.jpg" alt="图片描述">
+
+<p>结果就是：<strong>原本一个巨长的long task，被一分为二。</strong></p>
+<p>关于为什么要将任务尽可能地切分 官方解释：</p>
+<blockquote>
+<p>This matters because when tasks are broken up, the browser has more opportunities to respond to higher-priority work—and that includes user interactions.</p>
+</blockquote>
+<p>白话就是，通过这种分解长任务，使得浏览器有更多的机会去处理其他高优先级的事情，比如响应用户的互动操作。如下图所示：<br><img src="/img/性能优化5_5.jpg" alt="图片描述"></p>
+<p>所以，将一些用户不可见的操作异步化，能够很好的切分long task。</p>
+<p>但是吧，某些情况下，没法通过定时器这种方式，比如有一个很大的数组，我们需要遍历其中的每一项做一些操作。可能每一项处理的速度很快，但是因为数量过大导致总的时间长。这种情况下咋搞？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">processData</span> () &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> largeDataArray) &#123;</span><br><span class="line">    <span class="comment">// Process the individual item here.</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方案就是使用其他的api，比如requestIdleCallback、postMessage等。其中的<code>RequestIdleCallback</code>就是我们之前说的raf，帧内执行回调，但需要注意的是，执行的条件是帧内有空闲时间（idle），所以优先级略低。</p>
+<ol start="2">
+<li><p><strong>worker</strong><br>如果纯粹是计算量过大，那我们完全可以将计算的工作扔给worker去处理即可，毕竟从主线程的角度来看，我们需要的仅仅是所需的数据而已。</p>
+</li>
+<li><p><strong>使用async&#x2F;await</strong></p>
+<blockquote>
+<p>Yielding to the main thread creates opportunities for critical work to run sooner.</p>
+</blockquote>
+</li>
+<li><p><strong>优先级调度机制</strong></p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scheduler.<span class="title function_">postTask</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">&#125;, &#123; <span class="attr">priority</span>: <span class="string">&#x27;background&#x27;</span> &#125;)</span><br><span class="line">scheduler.<span class="title function_">postTask</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">&#125;, &#123; <span class="attr">priority</span>: <span class="string">&#x27;user-blocking&#x27;</span> &#125;)</span><br><span class="line">scheduler.<span class="title function_">postTask</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">&#125;, &#123; <span class="attr">priority</span>: <span class="string">&#x27;background&#x27;</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>postTask去指定任务的优先级别。包含三个选项：<strong>user-blocking、user-visible、background</strong>。但是该api尚未成为标准，须谨慎使用。</p>
+<p><strong>总结</strong></p>
+<ol>
+<li>Yield to the main thread for critical, user-facing tasks.</li>
+<li>Use isInputPending() to yield to the main thread when the user is trying to interact with the page. 3. Prioritize tasks with postTask().</li>
+<li>Finally, do as little work as possible in your functions.</li>
+</ol>
+<p>严重参考文档： <a target="_blank" rel="noopener" href="https://web.dev/optimize-long-tasks/?utm_source=devtools">https://web.dev/optimize-long-tasks/?utm_source=devtools</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Miles｜佚心</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/11/16/%E6%80%A7%E8%83%BD%E7%9A%84%E8%80%83%E9%87%8F%EF%BC%9A%E7%AC%AC%E4%BA%94%E5%9B%9E/">http://example.com/2023/11/16/%E6%80%A7%E8%83%BD%E7%9A%84%E8%80%83%E9%87%8F%EF%BC%9A%E7%AC%AC%E4%BA%94%E5%9B%9E/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/img/f.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/16/js%E7%9A%84%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" title="js的奇奇怪怪那些事儿"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">js的奇奇怪怪那些事儿</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/16/Threejs%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%89%E5%9B%9E/" title="Threejs系列：第三回"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Threejs系列：第三回</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Miles｜佚心</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">139</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/didadida262"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/didadida262" target="_blank" title=""><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">変わらない闘志,折れない魂</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98%EF%BC%8C%E6%88%91%E4%BB%AC%E5%89%8D%E6%96%87%E4%BB%8B%E7%BB%8D%E8%BF%87%E4%BA%86%E5%85%AB%E8%82%A1%E6%96%87%E7%AF%87%E3%80%81%E5%AE%9E%E6%88%98%E7%89%88%E6%9C%AC%E4%BB%A5%E5%8F%8Acanvas%E6%80%A7%E8%83%BD%E7%9B%B8%E5%85%B3%E7%9A%84%E5%AE%9E%E6%93%8D%E3%80%82%E4%BB%8A%E5%A4%A9%EF%BC%8C%E6%88%91%E4%BB%AC%E7%BB%93%E5%90%88%E5%89%8D%E6%96%87%E4%BB%8B%E7%BB%8D%E8%BF%87%E7%9A%84google%E7%9A%84performance%E5%B7%A5%E5%85%B7%EF%BC%8C%E6%9D%A5%E6%9B%B4%E5%8A%A0%E6%B7%B1%E5%85%A5%E7%9A%84%E8%81%8A%E4%B8%80%E8%81%8A%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">关于性能问题，我们前文介绍过了八股文篇、实战版本以及canvas性能相关的实操。今天，我们结合前文介绍过的google的performance工具，来更加深入的聊一聊。</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/16/canvas%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93%E8%AF%A6%E8%A7%A3/" title="canvas离屏渲染详解">canvas离屏渲染详解</a><time datetime="2024-10-16T02:29:55.000Z" title="Created 2024-10-16 10:29:55">2024-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/04/Webkit%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%BA%8C%E5%9B%9E%EF%BC%88HTML%E8%A7%A3%E9%87%8A%E5%99%A8%E5%92%8CDOM%E6%A8%A1%E5%9E%8B%EF%BC%89/" title="Webkit系列：第二回（HTML解释器和DOM模型）">Webkit系列：第二回（HTML解释器和DOM模型）</a><time datetime="2024-09-04T02:45:20.000Z" title="Created 2024-09-04 10:45:20">2024-09-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/04/Webkit%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%9B%9E%EF%BC%88%E5%85%88%E9%AA%8C%E5%86%85%E5%AE%B9%EF%BC%89/" title="Webkit系列：第一回（先验内容）">Webkit系列：第一回（先验内容）</a><time datetime="2024-09-04T02:29:41.000Z" title="Created 2024-09-04 10:29:41">2024-09-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/08/02/Rust%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%9B%9E/" title="Rust系列：第一回*">Rust系列：第一回*</a><time datetime="2024-08-02T00:28:24.000Z" title="Created 2024-08-02 08:28:24">2024-08-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/31/%E8%B0%B7%E6%AD%8C%E6%8F%92%E4%BB%B6%E6%B5%81%E7%A8%8B%EF%BC%9A%E7%AC%AC%E4%B8%89%E5%9B%9E/" title="谷歌插件流程：第三回">谷歌插件流程：第三回</a><time datetime="2024-07-31T03:14:33.000Z" title="Created 2024-07-31 11:14:33">2024-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Miles｜佚心</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

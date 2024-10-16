@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CSS系列：目下大前端样式的终极解决方案 | 致敬仰望星空的人们</title><meta name="author" content="Miles｜佚心"><meta name="copyright" content="Miles｜佚心"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。 前端跟css相关的几个典型场景：移动端适配、页面换肤。相信做过的同学,无一不疯狂的掉过头发。倒不是说因为这个有多难，而是很烦，很杂。研发和产品互掐的重灾区。一套代码多端适用，确实很美好，但是这就要求项目从一开始就要严格关注到这个问题，以便后期的适配。 最近在帮一家海外的公司做项目时，发现他们的项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS系列：目下大前端样式的终极解决方案">
+<meta property="og:url" content="http://example.com/2024/05/06/CSS%E7%B3%BB%E5%88%97%EF%BC%9A%E7%9B%AE%E4%B8%8B%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="致敬仰望星空的人们">
+<meta property="og:description" content="本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。 前端跟css相关的几个典型场景：移动端适配、页面换肤。相信做过的同学,无一不疯狂的掉过头发。倒不是说因为这个有多难，而是很烦，很杂。研发和产品互掐的重灾区。一套代码多端适用，确实很美好，但是这就要求项目从一开始就要严格关注到这个问题，以便后期的适配。 最近在帮一家海外的公司做项目时，发现他们的项">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/f.jpg">
+<meta property="article:published_time" content="2024-05-06T08:43:00.000Z">
+<meta property="article:modified_time" content="2024-07-16T08:00:01.184Z">
+<meta property="article:author" content="Miles｜佚心">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/f.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2024/05/06/CSS%E7%B3%BB%E5%88%97%EF%BC%9A%E7%9B%AE%E4%B8%8B%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSS系列：目下大前端样式的终极解决方案',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-16 16:00:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/f.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">139</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="致敬仰望星空的人们"><span class="site-name">致敬仰望星空的人们</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSS系列：目下大前端样式的终极解决方案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-05-06T08:43:00.000Z" title="Created 2024-05-06 16:43:00">2024-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-16T08:00:01.184Z" title="Updated 2024-07-16 16:00:01">2024-07-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/css%E4%B8%93%E6%A0%8F/">css专栏</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSS系列：目下大前端样式的终极解决方案"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。"><a href="#本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。" class="headerlink" title="本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。"></a>本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。</h3><!-- 
+前端包含的东西、方向太多，根本原因在于，各种场景下的需求，如图像标注平台、仿工控软件、在线文档编辑平台、实时行为识别系统以及各种客户端软件的实现等等，这些场景导致其能力在无限的扩展。任何一项单拿出来，都能罗列出诸多的内容。 -->
+<p>前端跟css相关的几个典型场景：<code>移动端适配、页面换肤</code>。相信做过的同学,无一不疯狂的掉过头发。倒不是说因为这个有多难，而是很烦，很杂。研发和产品互掐的重灾区。一套代码多端适用，确实很美好，但是这就要求项目从一开始就要严格关注到这个问题，以便后期的适配。</p>
+<p>最近在帮一家海外的公司做项目时，发现他们的项目大量使用tailwind。更让我惊讶的是，他们的项目中，所使用到的组件，全部都是自己的开发人员自己实现的，搭配tailwind，对设计图的还原度，无限接近百分百，让我叹为观止。在接触他们之前的职业生涯中，基本上都是做的toB的业务，重逻辑功能的实现，至于ui，只要不是难看到人神共愤，基本上就可以了。接触了toC的业务之后突然发现，专业的前端，除了具备技术技能，还需要锻炼自身的美感。</p>
+<p>tailwind这个库方便在哪？</p>
+<ul>
+<li><code>极大的简化了css相关的代码</code></li>
+<li><code>完美解决各端适配的问题</code><br>举例：</li>
+</ul>
+<ol>
+<li><p>在tailwind的配置文件中设定好自身需要的几种端的大小</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">screens</span>: &#123;</span><br><span class="line">  <span class="attr">xs</span>: <span class="string">&#x27;300px&#x27;</span>,</span><br><span class="line">  <span class="comment">// =&gt; @media (min-width: 400px) &#123; ... &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">sm</span>: <span class="string">&#x27;640px&#x27;</span>,</span><br><span class="line">  <span class="comment">// =&gt; @media (min-width: 640px) &#123; ... &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">md</span>: <span class="string">&#x27;768px&#x27;</span>,</span><br><span class="line">  <span class="comment">// =&gt; @media (min-width: 768px) &#123; ... &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">lg</span>: <span class="string">&#x27;1024px&#x27;</span>,</span><br><span class="line">  <span class="comment">// =&gt; @media (min-width: 1024px) &#123; ... &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">xl</span>: <span class="string">&#x27;1280px&#x27;</span>,</span><br><span class="line">  <span class="comment">// =&gt; @media (min-width: 1280px) &#123; ... &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&#x27;2xl&#x27;</span>: <span class="string">&#x27;1536px&#x27;</span></span><br><span class="line">  <span class="comment">// =&gt; @media (min-width: 1536px) &#123; ... &#125;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用时如下，拿设置字体大小示范：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  <span class="attr">fontOswald16</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald sm:text-[16px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px]&#x27;</span>,</span><br><span class="line">  <span class="attr">fontOswald18</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald sm:text-[18px] md:text-[18px] lg:text-[18px] xl:text-[18px] 2xl:text-[18px]&#x27;</span>,</span><br><span class="line">  <span class="attr">fontOswald24</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald xs:text-[20px] sm:text-[24px] md:text-[24px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px]&#x27;</span>,</span><br><span class="line">  <span class="attr">fontOswald32</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald sm:text-[32px] md:text-[32px] lg:text-[32px] xl:text-[32px] 2xl:text-[32px]&#x27;</span>,</span><br><span class="line">  <span class="attr">fontOswald46</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald sm:text-[46px] md:text-[46px] lg:text-[46px] xl:text-[46px] 2xl:text-[46px]&#x27;</span>,</span><br><span class="line">  <span class="attr">fontOswald48</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald xs:text-[18px] sm:text-[48px] md:text-[48px] lg:text-[48px] xl:text-[48px] 2xl:text-[48px]&#x27;</span>,</span><br><span class="line">  <span class="attr">fontOswald52</span>:</span><br><span class="line">    <span class="string">&#x27;font-Oswald sm:text-[52px] md:text-[52px] lg:text-[52px] xl:text-[52px] 2xl:text-[52px]&#x27;</span>,</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 通常配置一个pattern文件单独存放所有设计好的字体配置，直接引入</span></span><br><span class="line">    &lt;div className=&#123;<span class="string">`<span class="subst">$&#123;pattern.fontOswald24&#125;</span>`</span>&#125;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>这样，实现所有端情况下的字体大小。</p>
+</li>
+</ol>
+<ul>
+<li><code>需要样式高度定制项目的最佳实践方案</code></li>
+</ul>
+<h4 id="tailwind有一套自己的语法规则，前期需要花点成本。就目下来看，如果所在的组是做toC业务的，并且需要高度灵活的页面实现，tailwind应该是首选。"><a href="#tailwind有一套自己的语法规则，前期需要花点成本。就目下来看，如果所在的组是做toC业务的，并且需要高度灵活的页面实现，tailwind应该是首选。" class="headerlink" title="tailwind有一套自己的语法规则，前期需要花点成本。就目下来看，如果所在的组是做toC业务的，并且需要高度灵活的页面实现，tailwind应该是首选。"></a>tailwind有一套自己的语法规则，前期需要花点成本。就目下来看，如果所在的组是做toC业务的，并且需要高度灵活的页面实现，tailwind应该是首选。</h4></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Miles｜佚心</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/05/06/CSS%E7%B3%BB%E5%88%97%EF%BC%9A%E7%9B%AE%E4%B8%8B%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">http://example.com/2024/05/06/CSS%E7%B3%BB%E5%88%97%EF%BC%9A%E7%9B%AE%E4%B8%8B%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/img/f.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/05/15/%E7%8E%A9%E5%85%B7Reactjs%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%89%E5%9B%9E(commit)/" title="玩具Reactjs系列：第三回(commit)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">玩具Reactjs系列：第三回(commit)</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/23/%E7%8E%A9%E5%85%B7React.js%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%BA%8C%E5%9B%9E(concurrentmode%E3%80%81fiber)/" title="玩具Reactjs系列：第二回(concurrentmode、fiber)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">玩具Reactjs系列：第二回(concurrentmode、fiber)</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/f.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Miles｜佚心</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">139</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/didadida262"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/didadida262" target="_blank" title=""><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">変わらない闘志,折れない魂</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E8%A6%81%E4%BB%8B%E7%BB%8Dtailwind%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%9C%A8%E6%88%91%E7%9C%8B%E6%9D%A5%EF%BC%8C%E8%83%BD%E5%A4%9F%E8%A7%A3%E5%86%B3%E7%9B%AE%E5%89%8D%E5%89%8D%E7%AB%AF%E9%A2%86%E5%9F%9F%E4%B8%AD%EF%BC%8C%E5%90%84%E7%A7%8D%E6%A0%B7%E5%BC%8F%E9%97%AE%E9%A2%98%E7%9A%84%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%8C%E7%9A%84%E5%BA%93%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">本文主要介绍tailwind，这个在我看来，能够解决目前前端领域中，各种样式问题的终极解决方案，的库。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tailwind%E6%9C%89%E4%B8%80%E5%A5%97%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99%EF%BC%8C%E5%89%8D%E6%9C%9F%E9%9C%80%E8%A6%81%E8%8A%B1%E7%82%B9%E6%88%90%E6%9C%AC%E3%80%82%E5%B0%B1%E7%9B%AE%E4%B8%8B%E6%9D%A5%E7%9C%8B%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%89%80%E5%9C%A8%E7%9A%84%E7%BB%84%E6%98%AF%E5%81%9AtoC%E4%B8%9A%E5%8A%A1%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E9%9C%80%E8%A6%81%E9%AB%98%E5%BA%A6%E7%81%B5%E6%B4%BB%E7%9A%84%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%EF%BC%8Ctailwind%E5%BA%94%E8%AF%A5%E6%98%AF%E9%A6%96%E9%80%89%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">tailwind有一套自己的语法规则，前期需要花点成本。就目下来看，如果所在的组是做toC业务的，并且需要高度灵活的页面实现，tailwind应该是首选。</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/16/canvas%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93%E8%AF%A6%E8%A7%A3/" title="canvas离屏渲染详解">canvas离屏渲染详解</a><time datetime="2024-10-16T02:29:55.000Z" title="Created 2024-10-16 10:29:55">2024-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/04/Webkit%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%BA%8C%E5%9B%9E%EF%BC%88HTML%E8%A7%A3%E9%87%8A%E5%99%A8%E5%92%8CDOM%E6%A8%A1%E5%9E%8B%EF%BC%89/" title="Webkit系列：第二回（HTML解释器和DOM模型）">Webkit系列：第二回（HTML解释器和DOM模型）</a><time datetime="2024-09-04T02:45:20.000Z" title="Created 2024-09-04 10:45:20">2024-09-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/04/Webkit%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%9B%9E%EF%BC%88%E5%85%88%E9%AA%8C%E5%86%85%E5%AE%B9%EF%BC%89/" title="Webkit系列：第一回（先验内容）">Webkit系列：第一回（先验内容）</a><time datetime="2024-09-04T02:29:41.000Z" title="Created 2024-09-04 10:29:41">2024-09-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/08/02/Rust%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%9B%9E/" title="Rust系列：第一回*">Rust系列：第一回*</a><time datetime="2024-08-02T00:28:24.000Z" title="Created 2024-08-02 08:28:24">2024-08-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/31/%E8%B0%B7%E6%AD%8C%E6%8F%92%E4%BB%B6%E6%B5%81%E7%A8%8B%EF%BC%9A%E7%AC%AC%E4%B8%89%E5%9B%9E/" title="谷歌插件流程：第三回">谷歌插件流程：第三回</a><time datetime="2024-07-31T03:14:33.000Z" title="Created 2024-07-31 11:14:33">2024-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Miles｜佚心</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
